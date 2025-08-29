@@ -4,7 +4,7 @@ const cors = require("cors");
 const path = require("path");
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 // middlewares
 app.use(cors());
@@ -22,8 +22,16 @@ app.get("*", (req, res) => {
 // подключение к MongoDB и запуск сервера
 const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/todos";
 
-mongoose.connect(MONGO_URI)
+mongoose.connect(MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
 .then(() => {
+  console.log(`Connected to MongoDB at ${MONGO_URI}`);
   app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
 })
-.catch(err => console.error(err));
+.catch(err => {
+  console.error("Failed to connect to MongoDB:");
+  console.error(err);
+  process.exit(1); 
+  });
