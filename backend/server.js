@@ -20,10 +20,9 @@ app.get("*", (req, res) => {
 });
 
 // подключение к MongoDB и запуск сервера
-mongoose.connect(process.env.MONGO_URI || "mongodb://127.0.0.1:27017/todos", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/todos";
+
+mongoose.connect(MONGO_URI)
 .then(() => {
   app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
 })
