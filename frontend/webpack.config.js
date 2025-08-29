@@ -32,17 +32,19 @@ module.exports = {
     ]
   },
   devServer: {
-    static: path.resolve(__dirname, "dist"),
-    port: 3000,
-    open: true,
-    hot: true,
-    liveReload: false,
-    proxy: [
-      {     
-        context: ['/api'],                           
-        target: "http://localhost:5000",
-        changeOrigin: true
-      }
-    ]
-  }
+  static: {
+    directory: path.resolve(__dirname, "dist"),
+  },
+  port: 3000,
+  open: true,
+  hot: true,
+ proxy: [
+    {
+      context: ['/api'],           // пути, которые нужно проксировать
+      target: 'http://localhost:5000',
+      changeOrigin: true,
+      secure: false,
+    }
+  ]
+}
 };

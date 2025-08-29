@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Modal } from "bootstrap";
 import "./main.css";
 
-const API_URL = "http://localhost:5000/api/todos";
+const API_URL = "/api/todos";
 
 const FormAddBtn = $(".form__btn");
 const toDoList = $(".todos-wrapper");
