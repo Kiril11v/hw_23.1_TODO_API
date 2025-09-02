@@ -20,7 +20,7 @@ app.get("*", (req, res) => {
 });
 
 // подключение к MongoDB и запуск сервера
-const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/todos";
+const MONGO_URI = 'mongodb+srv://kudkiril_db_user:kokos@cluster0.fk9hd6k.mongodb.net/';
 
 mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
